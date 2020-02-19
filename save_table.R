@@ -38,3 +38,4 @@ dc.times <- time.dc.avg %>%
 library(xlsx)
 write.xlsx(as.data.frame(tot.times), file="deliverables/racetrac_perf.xlsx", sheetName="sheet1", row.names=FALSE)
 write.xlsx(as.data.frame(dc.times), file="deliverables/racetrac_perf.xlsx", sheetName="sheet2", append=TRUE, row.names=FALSE)
+

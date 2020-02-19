@@ -95,7 +95,15 @@ counts.tpa
 north.golive <- read_excel("data/RaceTrac 11-18-19.xlsx") %>%
   select(Customer, DC_Name) %>%
   rename(DC = DC_Name) %>%
-  filter(DC != "TAMPA") %>%
+  filter(DC == "JACKSONVILLE" |
+           DC == "ORLANDO" |
+           DC == "DAYTONA" |
+           DC == "BREVARD" |
+           DC == "FT PIERCE" |
+           DC == "LAKELAND" |
+           DC == "GAINESVILLE" |
+           DC == "SEBRING" |
+           DC == "OCALA") %>%
   mutate(Go.Live = "11/18/2019")
 
 spring.nrt <- spring.visit %>%
@@ -135,33 +143,23 @@ spring_selector <- function(tib, PRE) {
 
 BREVARD <- spring_selector(spring.nrt[[1]], -85)
 
-BROWARD <- spring_selector(spring.nrt[[2]], -74)
+DAYTONA <- spring_selector(spring.nrt[[2]], -74)
 
-DAYTONA <- spring_selector(spring.nrt[[3]], -82)
+FT.PIERCE <- spring_selector(spring.nrt[[3]], -71)
 
-FT.MYERS <- spring_selector(spring.nrt[[4]], -83)
+GAINESVILLE <- spring_selector(spring.nrt[[4]], -115)
 
-FT.PIERCE <- spring_selector(spring.nrt[[5]], -71)
+JACKSONVILLE <- spring_selector(spring.nrt[[5]], -89)
 
-GAINESVILLE <- spring_selector(spring.nrt[[6]], -117)
+LAKELAND <- spring_selector(spring.nrt[[6]], -77)
 
-JACKSONVILLE <- spring_selector(spring.nrt[[7]], -89)
-
-LAKELAND <- spring_selector(spring.nrt[[8]], -77)
-
-MIAMI.DADE <- spring_selector(spring.nrt[[9]], -97)
-
-ORLANDO <- spring_selector(spring.nrt[[10]], -84)
-
-PALM.BEACH <- spring_selector(spring.nrt[[11]], -78)
-
-SARASOTA <- spring_selector(spring.nrt[[12]], -72)
+ORLANDO <- spring_selector(spring.nrt[[7]], -84)
 
 # bind locations
 
-spring <- rbind(spring.tpa, BREVARD[[1]], BROWARD[[1]], DAYTONA[[1]], FT.MYERS[[1]], FT.PIERCE[[1]], GAINESVILLE[[1]], JACKSONVILLE[[1]], LAKELAND[[1]], MIAMI.DADE[[1]], ORLANDO[[1]], PALM.BEACH[[1]], SARASOTA[[1]])
+spring <- rbind(spring.tpa, BREVARD[[1]], DAYTONA[[1]], FT.PIERCE[[1]], GAINESVILLE[[1]], JACKSONVILLE[[1]], LAKELAND[[1]], ORLANDO[[1]])
 
-counts <- rbind(counts.tpa, BREVARD[[2]], BROWARD[[2]], DAYTONA[[2]], FT.MYERS[[2]], FT.PIERCE[[2]], GAINESVILLE[[2]], JACKSONVILLE[[2]], LAKELAND[[2]], MIAMI.DADE[[2]], ORLANDO[[2]], PALM.BEACH[[2]], SARASOTA[[2]])
+counts <- rbind(counts.tpa, BREVARD[[2]], DAYTONA[[2]], FT.PIERCE[[2]], GAINESVILLE[[2]], JACKSONVILLE[[2]], LAKELAND[[2]], ORLANDO[[2]])
 
 rm(counts.tpa, BROWARD, BREVARD, DAYTONA, FT.MYERS, FT.PIERCE, GAINESVILLE, JACKSONVILLE, LAKELAND, MIAMI.DADE, north.golive, ORLANDO, PALM.BEACH, SARASOTA, spring.nrt, spring.tpa, spring.visit, tpa.golive)
 
